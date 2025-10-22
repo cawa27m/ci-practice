@@ -1,0 +1,18 @@
+name: Log Analysis Practice
+
+on: [push]
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Проверка версии Python
+        run: python --version
+
+      - name: Запуск несуществующего теста
+        run: python -m pytest tests/
+
+      - name: Попытка записать в /root
+        run: echo "test" > /root/file.txt
